@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product List</title>
+</head>
+
+<body>
+    <h1>Product List</h1>
+    <div id="product-list"></div>
+
+    <script>
+        // Fetch data from the API
+        fetch("https://fakestoreapi.com/products/")
+            .then((res) => res.json())
+            .then((result) => {
+                setData(result); 
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+
+        function setData(data) {
+            const productList = document.getElementById('product-list');
+
+            data.forEach((product) => {
+                const productDiv = document.createElement('div');
+                productDiv.style.border = "1px solid #ccc";
+                productDiv.style.margin = "10px";
+                productDiv.style.padding = "10px";
+
+                const productTitle = document.createElement('h2');
+                productTitle.textContent = product.title;
+                productDiv.appendChild(productTitle);
+
+                const productImage = document.createElement('img');
+                productImage.src = product.image;
+                productImage.alt = product.title;
+                productImage.style.width = "100px";
+                productDiv.appendChild(productImage);
+
+                const productPrice = document.createElement('p');
+                productPrice.textContent = `Price: $${product.price}`;
+                productDiv.appendChild(productPrice);
+
+                productList.appendChild(productDiv);
+            });
+        }
+    </script>
+</body>
+
+</html>
