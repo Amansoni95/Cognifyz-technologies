@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="main">
+        <div id="loginForm">
+            <h2>Login Form</h2>
+            <div class="inner-main">
+                <input id="username" type="text" placeholder="Enter the username">
+                <br><br>
+                <input id="password" type="password" placeholder="Enter the password">
+                <br><br>
+                <button id="submitBtn">Login</button>
+                <div class="forget">
+                    <span><a href="#">forgetPassword?</a></span>
+                    <span>didn't have an account?<a href="#">Create</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h1 id="message"></h1>
+
+    <script>
+        // Get references to the input fields and button
+        const usernameInput = document.getElementById("username");
+        const passwordInput = document.getElementById("password");
+        const submitBtn = document.getElementById("submitBtn");
+        const messagePara = document.getElementById("message");
+
+        submitBtn.addEventListener("click", function () {
+            const user = usernameInput.value;
+            const pass = passwordInput.value;
+
+            if (user === "Aman" && pass === "0000") {
+                messagePara.textContent = "Login Successful !!!";
+                messagePara.style.color = "aqua";
+                setTimeout(() => {
+                    messagePara.textContent = "";
+                }, 5000);
+            } else {
+                messagePara.textContent = "Invalid username or password !!!";
+                setTimeout(() => {
+                    messagePara.textContent = "";
+                }, 3000);
+                messagePara.style.color = "red";
+            }
+        });
+    </script>
+</body>
+
+</html>
